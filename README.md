@@ -1,0 +1,2 @@
+# BTF_Team
+All we love is the vintage style of the old games. Mario, The Lost Vikings, Mortal Kombat, etc. In our university we have a lot of students who love coffee, vinyl records and the old games of the 90s. So our team represents impressive and uncommon decision. This is an arcade based on Unity platform with colorful and easy interface for users of all ages. This game can help school graduates to feel the atmosphere of the HSE, and they also can find new interesting facts about our university. 
