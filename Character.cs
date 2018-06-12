@@ -9,13 +9,15 @@ public class Character :MonoBehaviour{
     private float speed = 3.0F; 
     [SerializeField]
     private float jumpforce = 3.0F;
+
     [SerializeField]
-    private int lives = 3;
+    public int score;
     private bool isGrounded = false;
 
     private Rigidbody2D PlayerRigidBody;
     private Animator animator;
-    private SpriteRenderer Sprite; 
+    private SpriteRenderer Sprite;
+    public GUISkin  MarkcSkin; 
 
     private CharState State 
     {
@@ -36,7 +38,21 @@ public class Character :MonoBehaviour{
             Application.LoadLevel(Application.loadedLevel); 
 
         } 
-    }
+    } 
+    public void OnGUI()
+    {
+        GUI.skin = MarkcSkin;
+        GUI.Label(new Rect(4, 0, 90, 70), "Marks: " + score);
+    } 
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Marks")
+        {
+            score++;
+            Destroy(collision.gameObject);
+        }
+    } 
 
     private void FixedUpdate()
     {
@@ -67,15 +83,18 @@ public class Character :MonoBehaviour{
     public void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Enemy")
-            Application.LoadLevel(Application.loadedLevel);
+            Application.LoadLevel(Application.loadedLevel);   
+     
     }
+   
 
     private void CheckGround()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3F);
 
         isGrounded = colliders.Length > 1;
-      
+
+       
     }
   
     private void Jump() 
